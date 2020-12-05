@@ -37,9 +37,8 @@ class KafkaConsumer:
         #
         #
         self.broker_properties = {
-                #
-                # TODO
-                #
+            "bootstrap.server": "PLAINTEXT://localhost:9092",
+            "schema.registry.url": "http://localhost:8081"
         }
 
         # TODO: Create the Consumer, using the appropriate type.

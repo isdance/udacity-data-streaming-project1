@@ -32,9 +32,9 @@ class TimeSimulation:
             self.time_step = datetime.timedelta(minutes=self.sleep_seconds)
 
         # Read data from disk
-        self.raw_df = pd.read_csv(
-            f"{Path(__file__).parents[0]}/data/cta_stations.csv"
-        ).sort_values("order")
+        self.raw_df = pd.read_csv(f"{Path(__file__).parents[0]}/data/cta_stations.csv").sort_values(
+            "order"
+        )
 
         # Define the train schedule (same for all trains)
         self.schedule = schedule
@@ -56,9 +56,7 @@ class TimeSimulation:
         ]
 
     def run(self):
-        curr_time = datetime.datetime.utcnow().replace(
-            hour=0, minute=0, second=0, microsecond=0
-        )
+        curr_time = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
         logger.info("Beginning simulation, press Ctrl+C to exit at any time")
         logger.info("loading kafka connect jdbc source connector")
         configure_connector()

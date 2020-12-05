@@ -22,26 +22,16 @@ class TurnstileHardware:
         self.metrics_df = TurnstileHardware.seed_df[
             TurnstileHardware.seed_df["station_id"] == station.station_id
         ]
-        self.weekday_ridership = int(
-            round(self.metrics_df.iloc[0]["avg_weekday_rides"])
-        )
-        self.saturday_ridership = int(
-            round(self.metrics_df.iloc[0]["avg_saturday_rides"])
-        )
-        self.sunday_ridership = int(
-            round(self.metrics_df.iloc[0]["avg_sunday-holiday_rides"])
-        )
+        self.weekday_ridership = int(round(self.metrics_df.iloc[0]["avg_weekday_rides"]))
+        self.saturday_ridership = int(round(self.metrics_df.iloc[0]["avg_saturday_rides"]))
+        self.sunday_ridership = int(round(self.metrics_df.iloc[0]["avg_sunday-holiday_rides"]))
 
     @classmethod
     def _load_data(cls):
         if cls.curve_df is None:
-            cls.curve_df = pd.read_csv(
-                f"{Path(__file__).parents[1]}/data/ridership_curve.csv"
-            )
+            cls.curve_df = pd.read_csv(f"{Path(__file__).parents[1]}/data/ridership_curve.csv")
         if cls.seed_df is None:
-            cls.seed_df = pd.read_csv(
-                f"{Path(__file__).parents[1]}/data/ridership_seed.csv"
-            )
+            cls.seed_df = pd.read_csv(f"{Path(__file__).parents[1]}/data/ridership_seed.csv")
 
     def get_entries(self, timestamp, time_step):
         """Returns the number of turnstile entries for the given timeframe"""
