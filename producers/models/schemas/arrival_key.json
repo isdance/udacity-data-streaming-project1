@@ -1,0 +1,11 @@
+{
+  "name": "arrival.key",
+  "namespace": "com.udacity.project1",
+  "type": "record",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "long"
+    }
+  ]
+}
